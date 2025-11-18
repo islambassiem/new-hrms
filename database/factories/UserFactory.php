@@ -23,6 +23,7 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
+            'employee_code' => fake()->unique()->numerify('500###'),
             'name' => fake()->name(),
             'email' => fake()->unique()->safeEmail(),
             'email_verified_at' => now(),
