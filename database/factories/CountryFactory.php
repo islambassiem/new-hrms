@@ -22,8 +22,8 @@ class CountryFactory extends Factory
             'name_en' => fake()->unique()->country(),
             'name_ar' => fake()->unique()->country().' (AR)',
             'is_active' => fake()->boolean(20),
-            'created_by' => fake()->randomElement([User::pluck('id')->random(), null]),
-            'updated_by' => fake()->randomElement([User::pluck('id')->random(), null]),
+            'created_by' => fake()->randomElement([User::inRandomOrder()->first()->id, null]),
+            'updated_by' => fake()->randomElement([User::inRandomOrder()->first()->id, null]),
         ];
     }
 }

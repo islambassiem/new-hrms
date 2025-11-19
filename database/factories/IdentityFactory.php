@@ -35,8 +35,8 @@ class IdentityFactory extends Factory
             'place_of_issue' => fake()->randomElement([fake()->word(), null]),
             'date_of_issue' => fake()->randomElement([fake()->date(), null]),
             'date_of_expiry' => fake()->date(),
-            'created_by' => fake()->randomElement([User::pluck('id')->random(), null]),
-            'updated_by' => fake()->randomElement([User::pluck('id')->random(), null]),
+            'created_by' => fake()->randomElement([User::inRandomOrder()->first()->id, null]),
+            'updated_by' => fake()->randomElement([User::inRandomOrder()->first()->id, null]),
         ];
     }
 }
