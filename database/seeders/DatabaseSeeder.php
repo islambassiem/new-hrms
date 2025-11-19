@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             SpecialNeedsTypeSeeder::class,
             SponsorshipSeeder::class,
             EmployeeSeeder::class,
+            IdentitySeeder::class,
         ]);
     }
 }

@@ -26,8 +26,8 @@ class EmployeeFactory extends Factory
     public function definition(): array
     {
         return [
-            'user_id' => User::pluck('id')->random(),
-            'head_id' => fake()->randomElement([User::pluck('id')->random(), null]),
+            'user_id' => User::inRandomOrder()->first()->id,
+            'head_id' => fake()->randomElement([User::inRandomOrder()->first()->id, null]),
 
             'first_name_en' => fake('en')->firstName(),
             'middle_name_en' => fake('en')->randomElement([null, fake('en')->firstName()]),
@@ -40,11 +40,11 @@ class EmployeeFactory extends Factory
 
             'gender' => fake()->randomElement(GenderEnum::toArray()),
             'marital_status' => fake()->randomElement([collect(MaritalStatusEnum::cases())->random()->value, null]),
-            'nationality_id' => Country::pluck('id')->random(),
+            'nationality_id' => Country::inRandomOrder()->first()->id,
             'religion' => fake()->randomElement([collect(ReligionEnum::cases())->random()->value, null]),
             'home_country_id' => fake()->randomElement([null, fake()->regexify('[A-Z]{2}[0-9]{8}')]),
             'date_of_birth' => fake()->randomElement([null, fake()->date()]),
-            'place_of_birth' => fake()->randomElement([Country::pluck('id')->random(), null]),
+            'place_of_birth' => fake()->randomElement([Country::inRandomOrder()->first()->id, null]),
 
             'phone' => fake()->randomElement([null, fake()->phoneNumber()]),
             'mobile' => fake()->randomElement([null, fake()->phoneNumber()]),
@@ -56,14 +56,14 @@ class EmployeeFactory extends Factory
             'works_on_saturday' => fake()->boolean(20),
             'has_married_contract' => fake()->boolean(10),
 
-            'sponsorship_id' => Sponsorship::pluck('id')->random(),
+            'sponsorship_id' => Sponsorship::inRandomOrder()->first()->id,
             'joining_date' => fake()->date(),
             'resignation_date' => fake()->randomElement([null, fake()->date()]),
             'vacation' => collect(VacationEnum::cases())->random()->value,
-            'special_needs_id' => fake()->randomElement([SpecialNeedsType::pluck('id')->random(), null]),
-            'insurance_id' => fake()->randomElement([Insurance::pluck('id')->random(), null]),
-            'created_by' => fake()->randomElement([User::pluck('id')->random(), null]),
-            'updated_by' => fake()->randomElement([User::pluck('id')->random(), null]),
+            'special_needs_id' => fake()->randomElement([SpecialNeedsType::inRandomOrder()->first()->id, null]),
+            'insurance_id' => fake()->randomElement([Insurance::inRandomOrder()->first()->id, null]),
+            'created_by' => fake()->randomElement([User::inRandomOrder()->first()->id, null]),
+            'updated_by' => fake()->randomElement([User::inRandomOrder()->first()->id, null]),
         ];
     }
 }
