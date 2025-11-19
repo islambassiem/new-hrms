@@ -25,6 +25,7 @@ class DatabaseSeeder extends Seeder
             JobTitleSeeder::class,
             PositionSeeder::class,
             AchievementSeeder::class,
+            CourseSeeder::class,
         ]);
     }
 }
