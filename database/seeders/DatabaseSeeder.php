@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             SponsorshipSeeder::class,
             EmployeeSeeder::class,
             IdentitySeeder::class,
+            RoleSeeder::class,
         ]);
     }
 }

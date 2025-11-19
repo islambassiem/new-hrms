@@ -6,6 +6,7 @@ use App\Traits\TrackUser;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class Employee extends Model
 {
@@ -58,5 +59,21 @@ class Employee extends Model
     public function getInitialsAttribute(): string
     {
         return strtoupper(substr($this->first_name_en, 0, 1).substr($this->last_name_en, 0, 1));
+    }
+
+    /**
+     * @return BelongsTo<User, $this>
+     */
+    public function head(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'head_id');
+    }
+
+    /**
+     * @return BelongsTo<User, $this>
+     */
+    public function user(): BelongsTo
+    {
+        return $this->belongsTo(User::class, 'user_id');
     }
 }
