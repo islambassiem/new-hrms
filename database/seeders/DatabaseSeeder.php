@@ -24,6 +24,7 @@ class DatabaseSeeder extends Seeder
             RoleSeeder::class,
             JobTitleSeeder::class,
             PositionSeeder::class,
+            AchievementSeeder::class,
         ]);
     }
 }
